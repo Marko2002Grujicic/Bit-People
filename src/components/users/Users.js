@@ -10,9 +10,11 @@ export const Users = () => {
         fetch('https://randomuser.me/api/?results=15')
         .then((response) => response.json())
         .then((data) => {
-            setUsers(data.results)
+            setUsers(data.results);
         });
     }, []);
+
+    console.log(users);
 
     const hideEmail = (email) => {
         const atIndex = email.indexOf("@");
@@ -22,17 +24,22 @@ export const Users = () => {
         return hiddenUsername + domain
     }
     
+    
     users.forEach(user => {
         user.hiddenEmail = hideEmail(user.email);
+        user.formatedUsername = `${user.name.first} ${user.name.last}`;
     });
 
+    
     return (
         <div className="container">
             {users.map(user => (
-            
                 <div key={user.email} className="userProfile">
+                    <img src={user.picture.large} alt="user"/>
                         <div className="userInfo">
+                            <span>Name: {user.formatedUsername}</span>
                             <span><FontAwesomeIcon icon={faEnvelope} className="icon"/>Email: {user.hiddenEmail}</span>
+                            <span><FontAwesomeIcon icon={faCake} className="icon"/> {new Date(user.dob.date).toLocaleDateString("en-GB")}</span>
                         </div>
                 </div>
             ))}
