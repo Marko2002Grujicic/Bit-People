@@ -1,0 +1,7 @@
+header,
+footer {
+  background-color: #ee6e73;
+  color: white;
+  padding: 20px;
+  display: flex;
+}
