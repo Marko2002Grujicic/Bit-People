@@ -1,13 +1,13 @@
 import './Header&Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTh, faThList } from '@fortawesome/free-solid-svg-icons';
+import { faTh, faThList, faArrowRotateRight } from '@fortawesome/free-solid-svg-icons';
 
 import { useState, useEffect } from 'react';
 
 export const Header = () => {
-  const [isGrid, setIsGrid] = useState(false);
+    const [isGrid, setIsGrid] = useState(false);
 
-  useEffect(() => {
+    useEffect(() => {
     const container = document.querySelector('#container');
     const userProfile = document.querySelectorAll('.userProfile');
     const icon = document.querySelector('.view-icon');
@@ -29,17 +29,28 @@ export const Header = () => {
     }
   }, [isGrid]);
 
-  function handleClick() {
+  const handleClick = () => {
     setIsGrid((prevIsGrid) => !prevIsGrid);
+  }
+
+
+  const restartClickHandler = () => {
+
   }
 
   return (
     <header>
       <h1>BIT People</h1>
-      
-        <button onClick={handleClick} className="headerIcon">
+      <div className='header-icons'>
+        <button onClick={restartClickHandler}>
+        <FontAwesomeIcon icon={faArrowRotateRight} className="view-icon"/>
+        </button>
+        <button onClick={handleClick}>
         <FontAwesomeIcon className="view-icon" icon={isGrid ? faTh : faThList} />
         </button>
+        
+      </div>
+        
   
     </header>
   );

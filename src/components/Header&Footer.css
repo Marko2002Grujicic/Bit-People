@@ -19,12 +19,18 @@ footer {
   color: white;
   background-color: #ee6e73;
 }
-.headerIcon {
+button {
   border: none;
 }
-.headerIcon:hover {
+button:hover {
   cursor: pointer;
 }
 .hidden {
   display: none;
+}
+.header-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
 }
