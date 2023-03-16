@@ -4,4 +4,27 @@ footer {
   color: white;
   padding: 20px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-icon {
+  font-size: 30px;
+  color: white;
+  background-color: #ee6e73;
+}
+.headerIcon {
+  border: none;
+}
+.headerIcon:hover {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
 }
