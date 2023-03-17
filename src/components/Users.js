@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEnvelope, faCake} from '@fortawesome/free-solid-svg-icons';
-
+import './Users.css'
 
 export const Users = () => {
     const [users,setUsers] = useState([]);
+
 
     useEffect(() => {
         fetch('https://randomuser.me/api/?results=15')
