@@ -1,12 +1,18 @@
 import { Header } from './components/Header';
 import './App.css';
-import { MainContent } from './components/MainContent';
+import { Users } from './components/Users';
+
 
 function App() {
+  const handleReload = () => {
+    window.location.reload();
+  };
+
+
   return (
     <div className="App">
-      <Header></Header>
-      <MainContent></MainContent>
+      <Header  handleReload={handleReload}></Header>
+      <Users ></Users>
       
     </div>
   );
