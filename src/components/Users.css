@@ -23,6 +23,9 @@
   padding-bottom: 15px;
   flex-wrap: wrap;
 }
+.female {
+  background-color: lightcoral;
+}
 .grid-layout {
   flex-direction: row;
   flex-wrap: wrap;
