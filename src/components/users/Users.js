@@ -14,7 +14,6 @@ export const Users = () => {
         });
     }, []);
 
-    console.log(users);
 
     const hideEmail = (email) => {
         const atIndex = email.indexOf("@");
@@ -32,10 +31,10 @@ export const Users = () => {
 
     
     return (
-        <div className="container">
+        <div className="container" id="container">
             {users.map(user => (
-                <div key={user.email} className="userProfile">
-                    <img src={user.picture.large} alt="user"/>
+                <div key={user.email} className="userProfile " id="userProfile">
+                    <img src={user.picture.large} alt="user" className="image"/>
                         <div className="userInfo">
                             <span>Name: {user.formatedUsername}</span>
                             <span><FontAwesomeIcon icon={faEnvelope} className="icon"/>Email: {user.hiddenEmail}</span>

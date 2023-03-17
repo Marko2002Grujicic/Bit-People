@@ -1,10 +1,19 @@
-img {
+.image {
   border-radius: 50px;
   width: 80px;
 }
 .container {
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
+
+.list-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .userProfile {
   width: 80%;
   margin: 0 auto;
@@ -12,6 +21,19 @@ img {
   display: flex;
   align-items: center;
   padding-bottom: 15px;
+  flex-wrap: wrap;
+}
+.grid-layout {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.grid-userProfile {
+  width: 25%;
+}
+.grid-userProfile img {
+  width: 100%;
+  border-radius: 0;
 }
 .userInfo {
   padding-left: 20px;
