@@ -30,11 +30,18 @@ export const Users = () => {
         user.formatedUsername = `${user.name.first} ${user.name.last}`;
     });
 
-    
+    const gender = (user) => {
+        let className = ""
+        if (user.gender === 'female'){
+            className = 'female';
+        }
+        return className;
+    }
+
     return (
         <div className="container" id="container">
             {users.map(user => (
-                <div key={user.email} className="userProfile " id="userProfile">
+                <div key={user.email} className={`userProfile ${gender(user)}`} id="userProfile">
                     <img src={user.picture.large} alt="user" className="image"/>
                         <div className="userInfo">
                             <span>Name: {user.formatedUsername}</span>
