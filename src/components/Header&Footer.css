@@ -4,8 +4,9 @@ footer {
   color: white;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  height: 90px;
 }
 .icon-container {
   padding: 20px;
@@ -15,7 +16,7 @@ footer {
 }
 
 .view-icon {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
   background-color: #ee6e73;
 }
@@ -37,4 +38,11 @@ button:hover {
 footer {
   position: relative;
   bottom: 0;
+}
+.styled {
+  color: white;
+  text-decoration: none;
+}
+.styled:hover {
+  cursor: pointer;
 }

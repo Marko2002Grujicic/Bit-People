@@ -8,6 +8,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  width: 70%;
+  margin: 0 auto;
 }
 .image {
   border-radius: 50px;
@@ -21,6 +23,9 @@
   align-items: center;
   padding-bottom: 15px;
   flex-wrap: wrap;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 .grid-userProfile img {
   width: 100%;
@@ -38,4 +43,17 @@
 }
 .hidden {
   display: none;
+}
+@media screen and (max-width: 1000px) {
+  .grid-userProfile {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 660px) {
+  .grid-userProfile {
+    width: 60%;
+  }
+  .grid-layout {
+    gap: 30px;
+  }
 }

@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEnvelope, faCake} from '@fortawesome/free-solid-svg-icons';
 import './UsersGrid.css'
 
-
-
 export const UsersGrid = ({users, }) => {
 
     const hideEmail = (email) => {
@@ -28,7 +26,7 @@ export const UsersGrid = ({users, }) => {
     }
 
     return (
-        <>
+        <>  
                 <div className="grid-layout" id="container">
                 {users.map(user => (
                 <div key={user.email} className={`${checkGender(user)} grid-userProfile `} id="userProfile">
