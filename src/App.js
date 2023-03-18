@@ -1,12 +1,11 @@
 import { Header } from './components/Header';
 import './App.css';
-import { UsersList } from './components/UsersList';
-import { UsersGrid } from './components/UserGrid';
 import { Footer } from './components/Footer';
 import { useState, useEffect } from 'react';
 import { LoadingAnimation } from "./components/LoadingAnimation/LoadingAnimation";
-import { Search } from './components/Search/Search';
-import { NoUserFound } from './components/NoUserFound/NoUserFound';
+import { Route, Routes } from 'react-router';
+import { MainContent } from './components/MainContent';
+import About from './components/About/About';
 
 function App() {
   const [layout, setLayout] = useState("list");
@@ -135,12 +134,11 @@ const genderCounter = () => {
   return (
     <div className="App">
       <Header toggleLayout={toggleLayout} layout={layout}  setLayout={setLayout} handleReload={handleReload}></Header>
-      <>
       {isLoading && <LoadingAnimation />}
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoading ={isLoading} maleUsers={maleUsers} femaleUsers={femaleUsers}/>
-        {!filteredUsers.length && <NoUserFound/>}
-        {layout === "list" ? (<UsersList users={filteredUsers}/>) : (<UsersGrid users={filteredUsers} />)}
-      </>
+      <Routes>
+          <Route path="/main" element={<MainContent searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoading={isLoading} maleUsers={maleUsers} femaleUsers={femaleUsers} filteredUsers={filteredUsers} layout={layout} />}/>
+          <Route path="/about" element={<About />}/>
+        </Routes>
       <Footer elapsedTime={elapsedTime}/>
     </div>
   );
