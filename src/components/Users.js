@@ -2,17 +2,21 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEnvelope, faCake, faSearch} from '@fortawesome/free-solid-svg-icons';
 import './Users.css'
-import './Search/Search.css'
+import './Search.css'
+import { LoadingAnimation } from "./LoadingAnimation/LoadingAnimation";
 
 export const Users = () => {
     const [users,setUsers] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true)
         fetch('https://randomuser.me/api/?results=15')
         .then((response) => response.json())
         .then((data) => {
             setUsers(data.results);
+            setIsLoading(false)
         });
     }, []);
 
@@ -36,26 +40,29 @@ export const Users = () => {
         }
         return className;
     }
-    const filteredUsers = users.filter((user) =>
+    const filteredUsers = users.filter((user) => 
     user.name.first.toLowerCase().includes(searchText.toLowerCase()) || user.name.last.toLowerCase().includes(searchText.toLocaleLowerCase())
+    
   );
   const handleSearch = (event) => {
     setSearchText(event.target.value);
   };
 
     return (
-            <div className="container" id="container">
-             <div id="search-container">
-            <FontAwesomeIcon icon={faSearch} className="icon" />
-            <input
-             type="text"
-            placeholder="Search users"
-            id="search-input"
-            value={searchText}
-            onChange={handleSearch}
-             />
-             </div>
-            {filteredUsers.map(user => (
+        <>
+        {isLoading && <LoadingAnimation />}
+            <div id="search-container" className={isLoading ? "hidden" : "active"}>
+                    <FontAwesomeIcon icon={faSearch} className="icon" />
+                    <input
+                    type="text"
+                    placeholder="Search users"
+                    id="search-input"
+                    value={searchText}
+                    onChange={handleSearch}
+                    />
+            </div>
+                <div className="container" id="container">
+                {filteredUsers.map(user => (
                 <div key={user.email} className={`userProfile ${checkGender(user)}`} id="userProfile">
                     <img src={user.picture.large} alt="user" className="image"/>
                         <div className="userInfo">
@@ -64,7 +71,10 @@ export const Users = () => {
                             <span><FontAwesomeIcon icon={faCake} className="icon"/> {new Date(user.dob.date).toLocaleDateString("en-GB")}</span>
                         </div>
                 </div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </>
+        
+        
     )
 }
