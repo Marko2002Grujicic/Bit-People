@@ -36,8 +36,10 @@ button:hover {
   gap: 20px;
 }
 footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
+  align-self: stretch;
+  width: 100%;
 }
 .styled {
   color: white;
