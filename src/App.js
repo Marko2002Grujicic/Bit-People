@@ -14,7 +14,6 @@ function App() {
   const [users,setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [results, setResults] = useState(true);
 
   const toggleLayout = () => {
     localStorage.setItem("layout", layout === "list" ? "grid" : "list");
@@ -38,9 +37,6 @@ function App() {
 
 useEffect(() => {
   const newFilteredUsers = users.filter(user => user.name.first.toLowerCase().includes(searchQuery.toLowerCase()) || user.name.last.toLowerCase().includes(searchQuery.toLocaleLowerCase()));
-  if (newFilteredUsers.length === 0){
-    setResults(true);
-  }
   setFilteredUsers(newFilteredUsers);
 }, [searchQuery, users]);
 
@@ -51,14 +47,16 @@ useEffect(() => {
   };
 }, []);
 
+
+
   return (
     <div className="App">
       <Header toggleLayout={toggleLayout} layout={layout}  setLayout={setLayout} handleReload={handleReload}></Header>
       <>
       {isLoading && <LoadingAnimation />}
         <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} isLoading ={isLoading}/>
-        {results && <NoUserFound/>}
-        {layout === "list" ? (<UsersList users={filteredUsers}/>) : (<UsersGrid users={filteredUsers}/>)}
+      {!filteredUsers.length && <NoUserFound/>}
+      {layout === "list" ? (<UsersList users={filteredUsers}/>) : (<UsersGrid users={filteredUsers}/>)}
       </>
       <Footer/>
     </div>

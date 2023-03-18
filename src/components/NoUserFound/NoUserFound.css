@@ -3,9 +3,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  flex-wrap: wrap;
+  height: 70vh;
+  color: #616161;
+  font-size: 40px;
+  width: 30%;
+  margin: 0 auto;
 }
 .noUserFound {
-  font-size: 60px;
-  color: gray;
+  padding-bottom: 20px;
+  font-size: 100px;
+  font-weight: 600;
 }
